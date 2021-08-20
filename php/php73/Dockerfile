@@ -5,7 +5,7 @@ FROM php:7.3-fpm-alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk add --no-cache autoconf g++ libtool make curl-dev libxml2-dev linux-headers libzip-dev
 
-RUN docker-php-ext-install bcmath pcntl pdo_mysql mysqli curl zip
+RUN docker-php-ext-install bcmath pcntl pdo_mysql mysqli curl zip openssl
 
 # #Composer
 RUN curl -sS https://getcomposer.org/installer | php \
