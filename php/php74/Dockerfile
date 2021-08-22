@@ -15,9 +15,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 #GD
  RUN apk add --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
-    && docker-php-ext-configure gd \
-    -with-jpeg=/usr/include \
-    --with-freetype=/usr/include \
+    && docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2 \
     && docker-php-ext-install ${MC} gd
 #Swoole
 #ARG PHP_SWOOLE=false

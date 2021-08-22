@@ -85,6 +85,6 @@ services:
         MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD}"
     networks:
       - app_net
-    container_name: "cellular-mysql5.7"
+    container_name: "lnmp-mysql5.7"
 networks:
   app_net:
