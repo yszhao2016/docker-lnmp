@@ -8,16 +8,17 @@ RUN apk add --no-cache autoconf g++ libtool make curl-dev libxml2-dev linux-head
 RUN docker-php-ext-install bcmath pcntl pdo_mysql mysqli curl zip
 
 # #Composer
-RUN \
+RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer self-update --clean-backups \
     && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 #GD
  RUN apk add --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd \
+    -with-jpeg=/usr/include \
+    --with-freetype=/usr/include \
     && docker-php-ext-install ${MC} gd
-
 #Swoole
 #ARG PHP_SWOOLE=false
 #RUN if [ ${PHP_SWOOLE} != false ]; then \

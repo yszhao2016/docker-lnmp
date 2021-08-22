@@ -51,3 +51,8 @@ RUN if [ ${PHP_REDIS} != false ]; then \
 # ;fi
 
 WORKDIR /var/www/html
+
+
+RUN chown -R www-data:www-data /var/www/html
+# && chmod -R 0777 /app/storage      \
+# && composer install
